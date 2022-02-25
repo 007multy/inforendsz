@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from 'src/models/product';
+import { ProductService } from './Services/product.service';
 
 @Component({
   selector: 'my-app',
@@ -6,22 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-    major = 0;
-    minor = 0;
-    patch = 1;
+    
+  @Input() products: Product[]
+  constructor(
+    private productService: ProductService
+  ) { }
 
-  handleMajorVersionIncremented() {
-    this.major++;
-    this.minor = 0;
-    this.patch = 0;
-  }
-  handleMinorVersionIncremented() {
-    this.minor++;
-    this.patch = 0;
-  }
-
-  handlePatchVersionIncremented() {
-    this.patch++;
-  }
-
+  ngOnInit(){
+    this.productService.loadProducts().subscribe(data=>{
+      this.products = data;
+    })
+}
 }
