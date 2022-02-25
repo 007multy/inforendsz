@@ -1,0 +1,19 @@
+<p>
+control works!
+</p>
+
+
+
+<div class="row">
+  <div class="col-md-2">
+    <button class="btn btn-danger" (click)="majorVersionIncremented.emit()">Major</button>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-warning" (click)="minorVersionIncremented.emit()">Minor</button>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-success" (click)="patchVersionIncremented.emit()">Patch</button>
+  </div>
+</div>
+
+
